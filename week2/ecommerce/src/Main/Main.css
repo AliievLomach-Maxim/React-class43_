@@ -1,0 +1,35 @@
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 2em;
+}
+h4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.item-image {
+  max-height: 17em;
+  object-fit: contain;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+section {
+  width: calc((100% - 40px) / 3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* justify-content: center; */
+}
+
+@media screen and (max-width: 800px) {
+  section {
+    width: calc((100% - 20px) / 2);
+  }
+}
+@media screen and (max-width: 600px) {
+}
