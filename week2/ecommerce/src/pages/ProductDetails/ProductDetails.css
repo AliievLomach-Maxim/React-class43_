@@ -1,0 +1,14 @@
+.product {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.product img {
+	max-height: 80vh;
+	margin-bottom: auto;
+	margin-top: auto;
+	object-fit: contain;
+	width: 100%;
+}

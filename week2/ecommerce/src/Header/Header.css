@@ -1,0 +1,26 @@
+.categories-list {
+	display: flex;
+	padding: 0;
+}
+
+.category {
+	list-style-type: none;
+	font-size: 1.2em;
+	font-weight: 700;
+	margin-right: 0.2em;
+	padding: 0.5em;
+	background-color: #efeff0;
+}
+.category.active {
+	background-color: #bdbdc1;
+}
+.category:hover {
+	background-color: #d6d6d8;
+	cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+	.categories-list {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
