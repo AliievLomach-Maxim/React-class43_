@@ -1,17 +1,14 @@
 import './Header.css'
 import categories from '../fake-data/all-categories'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 function Header(props) {
 	const [selectedCategory, setSelectedCategory] = useState('')
 
 	const handleClick = (category) => {
+		props.filter(selectedCategory === category ? '' : category)
 		setSelectedCategory(selectedCategory === category ? '' : category)
 	}
-
-	useEffect(() => {
-		props.filter(selectedCategory)
-	}, [props, selectedCategory])
 
 	return (
 		<div className='header'>
