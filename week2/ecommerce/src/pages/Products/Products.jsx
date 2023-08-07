@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getAllProducts, getProductsByCategory } from '../../api/api'
+import { handleCategoriesAndProducts } from '../../api/api'
 import { useEffect } from 'react'
 import Header from '../../Header/Header'
 import Main from '../../Main/Main'
@@ -10,29 +10,12 @@ const Products = () => {
 	const [error, setError] = useState('')
 	const [selectedCategory, setSelectedCategory] = useState('')
 
-	const fetchAllProducts = async () => {
-		try {
-			setIsLoading(true)
-			const productsData = await getAllProducts()
-			setProducts(productsData)
-		} catch (error) {
-			setError(error.message)
-		} finally {
-			setIsLoading(false)
-		}
-	}
-
 	useEffect(() => {
-		fetchAllProducts()
-	}, [])
-
-	useEffect(() => {
-		const fetchFilterProducts = async () => {
+		const fetchProducts = async (category = null) => {
 			try {
 				setIsLoading(true)
-				const productsData = await getProductsByCategory(
-					selectedCategory
-				)
+				setError('')
+				const productsData = await handleCategoriesAndProducts(category)
 				setProducts(productsData)
 			} catch (error) {
 				setError(error.message)
@@ -40,7 +23,7 @@ const Products = () => {
 				setIsLoading(false)
 			}
 		}
-		selectedCategory ? fetchFilterProducts() : fetchAllProducts()
+		selectedCategory ? fetchProducts(selectedCategory) : fetchProducts()
 	}, [selectedCategory])
 
 	return (

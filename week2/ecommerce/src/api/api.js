@@ -1,21 +1,17 @@
-export const getAllProducts = async () => {
-	const data = await fetch('https://fakestoreapi.com/products')
-	return await data.json()
-}
+const BASE_URL = 'https://fakestoreapi.com/products'
 
 export const getSingleProduct = async (id) => {
-	const data = await fetch(`https://fakestoreapi.com/products/${id}`)
+	const data = await fetch(`${BASE_URL}/${id}`)
 	return await data.json()
 }
 
 export const getAllCategories = async () => {
-	const data = await fetch('https://fakestoreapi.com/products/categories')
+	const data = await fetch(`${BASE_URL}/categories`)
 	return await data.json()
 }
 
-export const getProductsByCategory = async (category) => {
-	const data = await fetch(
-		`https://fakestoreapi.com/products/category/${category}`
-	)
+export const handleCategoriesAndProducts = async (category) => {
+	const url = category ? `${BASE_URL}/category/${category}` : BASE_URL
+	const data = await fetch(url)
 	return await data.json()
 }

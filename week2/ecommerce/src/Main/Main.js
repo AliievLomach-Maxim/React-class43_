@@ -6,7 +6,7 @@ function Main({ products }) {
 		<div className='main'>
 			{products.map((item) => (
 				<section key={item.id}>
-					<Link to={item.id.toString()}>
+					<Link to={`products/${item.id}`}>
 						<img
 							className='item-image'
 							src={item.image}
