@@ -1,0 +1,24 @@
+.product {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.product img {
+	max-height: 80vh;
+	margin-bottom: auto;
+	margin-top: auto;
+	margin-right: 20px;
+	object-fit: contain;
+	width: 100%;
+}
+
+.card-product {
+	display: flex;
+	justify-content: space-between;
+	padding-right: 40px;
+}
+.card-product span {
+	cursor: pointer;
+}

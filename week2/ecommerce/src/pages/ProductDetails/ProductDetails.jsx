@@ -15,6 +15,7 @@ const ProductDetails = () => {
 		const fetchProduct = async () => {
 			try {
 				setIsLoading(true)
+				setError('')
 				const productData = await getSingleProduct(id)
 				setProduct(productData)
 			} catch (error) {

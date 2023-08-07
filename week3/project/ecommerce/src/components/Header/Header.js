@@ -1,30 +1,20 @@
 import './Header.css'
-import { useState, useEffect } from 'react'
-import { getAllCategories } from '../api/api'
+import { useEffect } from 'react'
+import useFetch from '../../hooks/useFetch'
 
 function Header({ selectedCategory, setSelectedCategory }) {
-	const [categories, setCategories] = useState(null)
-	const [error, setError] = useState('')
+	const { data: categories, error, fetchData } = useFetch()
 
 	useEffect(() => {
-		const fetchCategories = async () => {
-			try {
-				const catagoriesData = await getAllCategories()
-				setCategories(catagoriesData)
-			} catch (error) {
-				setError(error.message)
-			}
-		}
-		fetchCategories()
-	}, [])
+		fetchData('products/categories')
+	}, [fetchData])
 
 	const handleClick = (category) => {
 		setSelectedCategory(selectedCategory === category ? '' : category)
 	}
 
 	return (
-		<div className='header'>
-			<h1>Products</h1>
+		<>
 			{error && <h2>{error}</h2>}
 			{categories && (
 				<nav className='nav-menu'>
@@ -43,7 +33,7 @@ function Header({ selectedCategory, setSelectedCategory }) {
 					</ul>
 				</nav>
 			)}
-		</div>
+		</>
 	)
 }
 export default Header
